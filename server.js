@@ -1,7 +1,6 @@
 const cors = require("cors");
 const path = require('path');
 const express = require("express");
-const expressStatic = require('express').static;
 const settings = require("./settings");
 
 const port = settings.apiPort;
@@ -28,7 +27,7 @@ testRouter.get("/visits", async (_req, res) => {
 
 const app = express();
 app.use(cors());
-app.use(expressStatic(staticHtmlPath));
+app.use(express.static(staticHtmlPath));
 app.use("/test", testRouter);
 // start the Express server
 app.listen(port, () => {
